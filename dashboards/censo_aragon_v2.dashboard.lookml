@@ -284,22 +284,6 @@
       fct_censo_anual.sexo_diferencia: "Sexo_diferencia"
       fct_censo_anual.densidad_municipio: "Densidad de población"
       fct_censo_anual.pct_poblacion_65_mas_annos: "% 65 y más años"
-    conditional_formatting:
-    - type: greater than
-      value: 0
-      font_color: "#336699"
-      bold: true
-      fields: [fct_censo_anual.sexo_diferencia]
-    - type: less than
-      value: 0
-      font_color: "#663366"
-      bold: true
-      fields: [fct_censo_anual.sexo_diferencia]
-    - type: greater than
-      value: 24.999999
-      font_color: "#CC3333"
-      bold: true
-      fields: [fct_censo_anual.pct_poblacion_65_mas_annos]
     show_totals: true
     show_view_names: false
     sorts: [dim_territorio.residencia_municipio_codigo]

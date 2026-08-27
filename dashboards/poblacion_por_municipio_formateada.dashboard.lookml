@@ -205,22 +205,6 @@
     # The information survives; its location moves one column. The two icons
     # (`cmap:/shared/custom/images/mas.png`, `fem.png`) are OBIEE server assets and
     # are not in the export at all — see the foot of this file.
-    conditional_formatting:
-    - type: greater than
-      value: 0
-      font_color: "#336699"
-      bold: true
-      fields: [fct_censo_anual.sexo_diferencia]
-    - type: less than
-      value: 0
-      font_color: "#663366"
-      bold: true
-      fields: [fct_censo_anual.sexo_diferencia]
-    - type: greater than
-      value: 24.999999
-      font_color: "#CC3333"
-      bold: true
-      fields: [fct_censo_anual.pct_poblacion_65_mas_annos]
     # `<saw:displayGrandTotals grandTotalPosition="after">`.
     show_totals: true
     show_view_names: false
