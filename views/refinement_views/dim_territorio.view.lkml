@@ -10,7 +10,10 @@ view: +dim_territorio {
     description: "Guarded denominator: area sentinels -1 and 0 are removed row-level in mart.dim_territorio — RULEBOOK R4.1, R4.2, R4.3 (null), R4.6"
     type: sum_distinct
     sql_distinct_key: ${TABLE}.municipio_codigo ;;
-    sql: ${TABLE}.municipio_superficie_km2 ;;
+    sql: CASE
+      WHEN ${municipio_superficie_codigo} IN (-1, 0) THEN NULL
+      ELSE ${municipio_superficie_codigo}
+    END ;;
     value_format_name: decimal_0
     hidden: yes
   }
@@ -22,7 +25,7 @@ view: +dim_territorio {
     description: "BUG(port): keeps SUPERFICIE = -1 in the denominator, exactly as OBIEE does — RULEBOOK R4.3 (bug_port), R4.6"
     type: sum_distinct
     sql_distinct_key: ${TABLE}.municipio_codigo ;;
-    sql: ${TABLE}.municipio_superficie_km2_obiee ;;
+    sql: ${municipio_superficie_codigo} ;;
     value_format_name: decimal_0
     hidden: yes
   }
@@ -34,7 +37,10 @@ view: +dim_territorio {
     description: "Guarded denominator: area sentinels -1 and 0 are removed row-level in mart.dim_territorio — RULEBOOK R4.1, R4.2, R4.3 (null), R4.6"
     type: sum_distinct
     sql_distinct_key: ${TABLE}.comarca_codigo ;;
-    sql: ${TABLE}.comarca_superficie_km2 ;;
+    sql: CASE
+      WHEN ${comarca_superficie_codigo} IN (-1, 0) THEN NULL
+      ELSE ${comarca_superficie_codigo}
+    END ;;
     value_format_name: decimal_0
     hidden: yes
   }
@@ -46,7 +52,7 @@ view: +dim_territorio {
     description: "BUG(port): keeps SUPERFICIE = -1 in the denominator, exactly as OBIEE does — RULEBOOK R4.3 (bug_port), R4.6"
     type: sum_distinct
     sql_distinct_key: ${TABLE}.comarca_codigo ;;
-    sql: ${TABLE}.comarca_superficie_km2_obiee ;;
+    sql: ${comarca_superficie_codigo} ;;
     value_format_name: decimal_0
     hidden: yes
   }
@@ -58,7 +64,10 @@ view: +dim_territorio {
     description: "Guarded denominator: area sentinels -1 and 0 are removed row-level in mart.dim_territorio — RULEBOOK R4.1, R4.2, R4.3 (null), R4.6"
     type: sum_distinct
     sql_distinct_key: ${TABLE}.provincia_codigo ;;
-    sql: ${TABLE}.provincia_superficie_km2 ;;
+    sql: CASE
+      WHEN ${provincia_superficie_codigo} IN (-1, 0) THEN NULL
+      ELSE ${provincia_superficie_codigo}
+    END ;;
     value_format_name: decimal_0
     hidden: yes
   }
@@ -70,7 +79,7 @@ view: +dim_territorio {
     description: "BUG(port): keeps SUPERFICIE = -1 in the denominator, exactly as OBIEE does — RULEBOOK R4.3 (bug_port), R4.6"
     type: sum_distinct
     sql_distinct_key: ${TABLE}.provincia_codigo ;;
-    sql: ${TABLE}.provincia_superficie_km2_obiee ;;
+    sql: ${provincia_superficie_codigo} ;;
     value_format_name: decimal_0
     hidden: yes
   }
@@ -89,8 +98,14 @@ view: +dim_territorio {
     # from R4.2's table on purpose; see the generator docstring.
     description: "Guarded denominator: area sentinels -1 and 0 are removed row-level in mart.dim_territorio — RULEBOOK R4.1, R4.2, R4.3 (null), R4.6"
     type: sum_distinct
-    sql_distinct_key: ${TABLE}.provincia_superficie_km2 ;;
-    sql: ${TABLE}.provincia_superficie_km2 ;;
+    sql_distinct_key: CASE
+      WHEN ${provincia_superficie_codigo} IN (-1, 0) THEN NULL
+      ELSE ${provincia_superficie_codigo}
+    END ;;
+    sql: CASE
+      WHEN ${provincia_superficie_codigo} IN (-1, 0) THEN NULL
+      ELSE ${provincia_superficie_codigo}
+    END ;;
     value_format_name: decimal_0
     hidden: yes
   }
@@ -109,8 +124,8 @@ view: +dim_territorio {
     # from R4.2's table on purpose; see the generator docstring.
     description: "BUG(port): keeps SUPERFICIE = -1 in the denominator, exactly as OBIEE does — RULEBOOK R4.3 (bug_port), R4.6"
     type: sum_distinct
-    sql_distinct_key: ${TABLE}.provincia_superficie_km2_obiee ;;
-    sql: ${TABLE}.provincia_superficie_km2_obiee ;;
+    sql_distinct_key: ${provincia_superficie_codigo} ;;
+    sql: ${provincia_superficie_codigo} ;;
     value_format_name: decimal_0
     hidden: yes
   }
