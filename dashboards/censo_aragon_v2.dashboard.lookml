@@ -295,8 +295,8 @@
       font_color: "#663366"
       bold: true
       fields: [fct_censo_anual.sexo_diferencia]
-    - type: greater than or equal to
-      value: 25
+    - type: greater than
+      value: 24.999999
       font_color: "#CC3333"
       bold: true
       fields: [fct_censo_anual.pct_poblacion_65_mas_annos]
